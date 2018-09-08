@@ -40,6 +40,7 @@
 	border: none;
 	border-radius: 4px;
 	margin: auto 30px auto auto;
+	color: white;
 }
 
 .container .filters button:hover {
@@ -127,6 +128,7 @@
 }
 
 .circle {
+    top: 15px;
     position:absolute;
     right: 30px;
     width:40px;

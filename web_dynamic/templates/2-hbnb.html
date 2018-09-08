@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <title>Holberton AirBnB</title>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="static/scripts/2-hbnb.js"></script>
+    <script src="{{ url_for('static', filename='scripts/2-hbnb.js') }}"></script>
+
     <!-- FAVICON -->
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.png') }}?{{ cache_id }}">
@@ -36,7 +37,7 @@
 	 ********************** -->
 
     <header>
-      <div id="api_status" class="circle, available">
+      <div id="api_status" class="circle">
 	</div>
     </header>
     <main>
