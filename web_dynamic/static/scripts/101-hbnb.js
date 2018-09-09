@@ -144,7 +144,33 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         $(data).each(function (index, place) {
-          $('SECTION.places').append('<article><div class="title"><h2>' + place.name + '</h2><div class="price_by_night">$' + place.price_by_night + '</div></div><div class="information"><div class="max_guest"><i class="fa fa-users fa-3x" aria-hidden="true"></i><br />' + place.max_guest + 'Guests</div><div class="number_rooms"><i class="fa fa-bed fa-3x" aria-hidden="true"></i><br />' + place.number_rooms + 'Bedrooms</div><div class="number_bathrooms"><i class="fa fa-bath fa-3x" aria-hidden="true"></i><br />' + place.number_bathrooms + 'Bathroom</div></div><div class="user"><strong>Owner: </strong>' + userDict[place.user_id].first_name + ' ' + userDict[place.user_id].last_name + '</div><div class="description">' + place.description + '</div>' + '<br /><div class="reviews"><h2 class="reviews">Reviews</h2></div>Hello there!</div></article>');
+          $('SECTION.places').append('<article><div class="title"><h2>' + place.name + '</h2><div class="price_by_night">$' + place.price_by_night + '</div></div><div class="information"><div class="max_guest"><i class="fa fa-users fa-3x" aria-hidden="true"></i><br />' + place.max_guest + 'Guests</div><div class="number_rooms"><i class="fa fa-bed fa-3x" aria-hidden="true"></i><br />' + place.number_rooms + 'Bedrooms</div><div class="number_bathrooms"><i class="fa fa-bath fa-3x" aria-hidden="true"></i><br />' + place.number_bathrooms + 'Bathroom</div></div><div class="user"><strong>Owner: </strong>' + userDict[place.user_id].first_name + ' ' + userDict[place.user_id].last_name + '</div><div class="description">' + place.description + '</div>' + '<br /><div class="reviews"><h2 class="reviews"><span class="reviewCount" id="'+ place.id +'"> 0 </span>Reviews</h2><span data-id="' + place.id + '" class="toggle">show</span></div><span class="reviewContent" id="'+ place.id +'">Hello there!</span></article>');
+        });
+
+        $('span.toggle').each(function (){
+            $.ajax({
+                  type: 'GET',
+                  url: urlPrefix + ':5001/api/v1/places/' + $(this).attr("data-id") + '/reviews/',
+                  success: function (reviews) {
+                    if (reviews.length !== 0 ) {
+                      let id = reviews[0].place_id
+                      console.log(reviews)
+                      //console.log(reviews.length + ' reviews.')
+                      $('span.reviewCount#' + id).text(reviews.length + " ")
+                      let $contentSpan = $('span.reviewContent#' + id)
+                      $(reviews).each(function (idx, review) {
+                          $contentSpan.append('<p class="reviewText" style="background: gray;">' + review.text + '</p>');
+                          //$contentSpan.hide("slow");
+                          
+                      })
+                    } else {
+                      
+                      console.log(0)
+                    }
+                  }
+                });
+            $(this).click(function (){
+            });
         });
       }
     });
