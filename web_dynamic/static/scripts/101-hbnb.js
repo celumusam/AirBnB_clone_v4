@@ -144,24 +144,61 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         $(data).each(function (index, place) {
-          $('SECTION.places').append('<article><div class="title"><h2>' + place.name + '</h2><div class="price_by_night">$' + place.price_by_night + '</div></div><div class="information"><div class="max_guest"><i class="fa fa-users fa-3x" aria-hidden="true"></i><br />' + place.max_guest + 'Guests</div><div class="number_rooms"><i class="fa fa-bed fa-3x" aria-hidden="true"></i><br />' + place.number_rooms + 'Bedrooms</div><div class="number_bathrooms"><i class="fa fa-bath fa-3x" aria-hidden="true"></i><br />' + place.number_bathrooms + 'Bathroom</div></div><div class="user"><strong>Owner: </strong>' + userDict[place.user_id].first_name + ' ' + userDict[place.user_id].last_name + '</div><div class="description">' + place.description + '</div>' + '<br /><div class="reviews"><h2 class="reviews"><span class="reviewCount" id="'+ place.id +'"> 0 </span>Reviews</h2><span data-id="' + place.id + '" class="toggle">show</span></div><span class="reviewContent" id="'+ place.id +'">Hello there!</span></article>');
-        });
+          $('SECTION.places').append('<article><div class="title"><h2>' + place.name + '</h2><div class="price_by_night">$' + place.price_by_night + '</div></div><div class="information"><div class="max_guest"><i class="fa fa-users fa-3x" aria-hidden="true"></i><br />' + place.max_guest + 'Guests</div><div class="number_rooms"><i class="fa fa-bed fa-3x" aria-hidden="true"></i><br />' + place.number_rooms + 'Bedrooms</div><div class="number_bathrooms"><i class="fa fa-bath fa-3x" aria-hidden="true"></i><br />' + place.number_bathrooms + 'Bathroom</div></div><div class="user"><strong>Owner: </strong>' + userDict[place.user_id].first_name + ' ' + userDict[place.user_id].last_name + '</div><div class="description">' + place.description + '</div>' + '<br /><div class="reviews"><h2 class="reviews"><span class="reviewCount" id="'+ place.id +'"> 0 </span>Reviews</h2><span id="' + place.id + '" class="toggle">show</span></div><span class="reviewContent" id="'+ place.id +'"></span></article>');
+        
+	    let placeId = place.id
+	    $.ajax({
+		  type: 'GET',
+		  url: urlPrefix + ':5001/api/v1/places/' + placeId + '/reviews/',
+		  success: function (reviews) {
+		    if (reviews.length !== 0 ) {
+		      //console.log(reviews)
+		      //console.log(reviews.length + ' reviews.')
+		      let $contentSpan = $('span.reviewContent#' + placeId)
+                      let $toggleSpan = $('span.toggle#' + placeId)
+                      console.log($contentSpan.attr('id'))
+		if ($contentSpan.attr('id')) {
+		      $(reviews).each(function (idx, review) {
+			  $('span.reviewCount#' + placeId).text(reviews.length + " ")
+			  //$contentSpan.text("inside loop, num reviews: " + reviews.length)	
+			  $contentSpan.append('<p class="reviewText" style="background: gray;">' + review.text + '</p>');
+			  $contentSpan.hide();
+		      });
+		}	
+		    } else {
+		     console.log(0);
+                      console.log('undefined id: ' + placeId);
+		    }
+                    $('span.toggle#' + placeId).click(function (){
+			if ($('span.reviewContent#' + placeId)) {
+      		              $('span.reviewContent#' + placeId).toggle("slow");
+	                    console.log(placeId + ' was clicked')
+			} 
+                   }); 
+		  }
+	    });
 
-        $('span.toggle').each(function (){
+	    /*$('span.toggle#' + placeId).click(function (){
+	      $('span.reviewContent#' + placeId).toggle("slow");
+	      console.log(placeId + ' was clicked')
+	    });*/
+
+	});
+
+        /*$('span.toggle').each(function (){
+            let placeId = $(this).attr("data-id")
             $.ajax({
                   type: 'GET',
-                  url: urlPrefix + ':5001/api/v1/places/' + $(this).attr("data-id") + '/reviews/',
+                  url: urlPrefix + ':5001/api/v1/places/' + placeId + '/reviews/',
                   success: function (reviews) {
                     if (reviews.length !== 0 ) {
-                      let id = reviews[0].place_id
-                      console.log(reviews)
+                      //console.log(reviews)
                       //console.log(reviews.length + ' reviews.')
-                      $('span.reviewCount#' + id).text(reviews.length + " ")
-                      let $contentSpan = $('span.reviewContent#' + id)
+                      let $contentSpan = $('span.reviewContent#' + placeId)
                       $(reviews).each(function (idx, review) {
+                          $('span.reviewCount#' + placeId).text(reviews.length + " ")
                           $contentSpan.append('<p class="reviewText" style="background: gray;">' + review.text + '</p>');
-                          //$contentSpan.hide("slow");
-                          
+                          $contentSpan.hide();
                       })
                     } else {
                       
@@ -170,9 +207,11 @@ document.addEventListener('DOMContentLoaded', function () {
                   }
                 });
             $(this).click(function (){
+              $('span.reviewContent#' + placeId).toggle("slow");
+              console.log(placeId + ' was clicked')
             });
-        });
+        });*/
       }
     });
-  }
+}
 });
