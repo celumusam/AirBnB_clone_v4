@@ -67,6 +67,13 @@
 	justify-content: center;
 }
 
+.container .places h2.reviews {
+    border-bottom: 1px solid #DDDDDD;
+    text-align: left;
+}
+
+
+
 .container .places .information .max_guest,
 .container .places .information .number_rooms,
 .container .places .information .number_bathrooms {
