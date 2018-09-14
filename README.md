@@ -217,6 +217,8 @@ github repo
 * Kimberly Wong, [kjowong](https://github.com/kjowong) | [@kjowong](https://twitter.com/kjowong) | [kjowong@gmail.com](kjowong@gmail.com)
 * Carrie Ybay, [hicarrie](https://github.com/hicarrie) | [@hicarrie_](https://twitter.com/hicarrie_)
 * Jared Heck, [jarehec](https://github.com/jarehec) | [@jarehec](https://twitter.com/jarehec)
+* Becky Chen, [bchen528](https://github.com/bchen528) | [@bchen803](https://twitter.com/bchen803)
+* Madison Burke, [RocketHTML](https://github.com/RocketHTML) | [@JsonBurke](https://twitter.com/jsonburke)
 
 ## License
 
