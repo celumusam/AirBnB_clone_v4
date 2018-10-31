@@ -58,8 +58,6 @@ The purpose of Phase 4 is to learn how to:
   * __web static:__ [W3C Validator](https://validator.w3.org/)
   * __bash:__ ShellCheck 0.3.3
 
-<img src="https://github.com/jarehec/AirBnB_clone_v3/blob/master/dev/hbnb_step5.png" />
-
 ## File Descriptions
   **Note:** Below highlights only new file additions for Phase 4. For file descriptions from previous phases: [Phase 1](https://github.com/bchen528/AirBnB_clone_v1) | [Phase 2](https://github.com/bchen528/AirBnB_clone_v2) | [Phase3](https://github.com/bchen528/AirBnB_clone_v3)
   * [tests](/tests/) - unit test files
