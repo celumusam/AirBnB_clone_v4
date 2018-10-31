@@ -1,14 +1,127 @@
-<img src="https://github.com/jarehec/AirBnB_clone_v3/blob/master/dev/HBTN-hbnb-Final.png" width="160" height=auto />
+# AirBnB_clone_v4: Web dynamic
 
-# AirBnB Clone: Phase # 3
+![hbnb](https://camo.githubusercontent.com/a0c52a69dc410e983b8c63fa4aa57e83cb4157cd/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f696e7472616e65742d70726f6a656374732d66696c65732f686f6c626572746f6e7363686f6f6c2d6869676865722d6c6576656c5f70726f6772616d6d696e672b2f3236332f4842544e2d68626e622d46696e616c2e706e67)
 
-: API with Swagger
+## Table of Contents
+
+* [Description](#description)
+* [Purpose](#purpose)
+* [Requirements](#requirements)
+* [File Descriptions](#file-descriptions)
+* [Environmental Variables](#environmental-variables)
+* [Usage](#usage)
+* [Bugs](#bugs)
+* [Authors](#authors)
+* [License](#license)
 
 ## Description
 
-Project attempts to clone the the AirBnB application and website, including the
-database, storage, RESTful API, Web Framework, and Front End.  Currently the
-application is designed to run with 2 storage engine models:
+**hbnb** is a full-stack clone of the web application [AirBnB](https://www.airbnb.com/). This clone was built in four iterative phases. This version includes completion of [Phase 1](https://github.com/bchen528/AirBnB_clone_v1), [Phase 2](https://github.com/bchen528/AirBnB_clone_v2), [Phase 3](https://github.com/bchen528/AirBnB_clone_v3) plus Phase 4 (Final version!), which involves loading objects from the client-side using our custom RESTful API and jQuery.
+
+### Load objects from the client-side using a custom RESTful API and jQuery
+![webdynamic](https://s3.amazonaws.com/intranet-projects-files/concepts/74/hbnb_step5.png)
+
+**Links to other versions:**
+* [AirBnB_clone_v1: Console and web static](https://github.com/bchen528/AirBnB_clone_v1)
+* [AirBnB_clone_v2: MySQL, deploy web static, web framework](https://github.com/bchen528/AirBnB_clone_v2)
+* [AirBnB_clone_v3: RESTful API](https://github.com/bchen528/AirBnB_clone_v3)
+
+## Purpose
+The purpose of Phase 4 is to learn how to:
+* request own API
+* modify an HTML element style
+* get/update HTML element style
+* make a GET request with jQuery Ajax
+* make a POST request with jQuery Ajax
+* modify the DOM
+* listen/bind to DOM events
+* listen/bind to user events
+
+## Requirements
+* All files compiled with Ubuntu 14.04 LTS
+* Documentation
+* Organized files in proper folders
+* Python unit tests for all files
+* All files must be pep8 and semistandard compliant
+
+## Environment
+
+* __OS:__ Ubuntu 14.04 LTS
+* __language:__ Python 3.4.3
+* __web server:__ nginx/1.4.6
+* __application server:__ Flask 0.12.2, Jinja2 2.9.6
+* __web server gateway:__ gunicorn (version 19.7.1)
+* __database:__ mysql Ver 14.14 Distrib 5.7.18
+* __documentation:__ Swagger (flasgger==0.6.6)
+* __style:__
+  * __python:__ PEP 8 (v. 1.7.0)
+  * __web static:__ [W3C Validator](https://validator.w3.org/)
+  * __bash:__ ShellCheck 0.3.3
+
+<img src="https://github.com/jarehec/AirBnB_clone_v3/blob/master/dev/hbnb_step5.png" />
+
+## File Descriptions
+  **Note:** Below highlights only new file additions for Phase 4. For file descriptions from previous phases: [Phase 1](https://github.com/bchen528/AirBnB_clone_v1) | [Phase 2](https://github.com/bchen528/AirBnB_clone_v2) | [Phase3](https://github.com/bchen528/AirBnB_clone_v3)
+  * [tests](/tests/) - unit test files
+  * [web_dynamic](web_dynamic) - contains Flask, template, static files
+    * [0-hbnb.py](web_dynamic/0-hbnb.py) - Flask app that integrates with AirBnB static HTML template, include caching ids
+      * `teardown_db` - after each request, this method calls .close() (i.e. .remove()) on the current SQLAlchemy Session
+      * `hbnb_filters` - handles request to custom template with states, cities & amentities
+    * [1-hbnb.py](web_dynamic/1-hbnb.py) - Flask app that integrates with AirBnB static HTML template, add checkboxes
+      * `teardown_db` - after each request, this method calls .close() (i.e. .remove()) on the current SQLAlchemy Session
+      * `hbnb_filters` - handles request to custom template with states, cities & amentities
+    * [2-hbnb.py](web_dynamic/2-hbnb.py) - Flask app that integrates with AirBnB static HTML template, check API status functionality and then test requesting HBNB API
+      * `teardown_db` - after each request, this method calls .close() (i.e. .remove()) on the current SQLAlchemy Session
+      * `hbnb_filters` - handles request to custom template with states, cities & amentities
+    * [3-hbnb.py](web_dynamic/3-hbnb.py) - Flask app that integrates with AirBnB static HTML template, make Places article dynamic
+      * `teardown_db` - after each request, this method calls .close() (i.e. .remove()) on the current SQLAlchemy Session
+      * `hbnb_filters` - handles request to custom template with states, cities & amentities
+    * [4-hbnb.py](web_dynamic/4-hbnb.py) - Flask app that integrates with AirBnB static HTML template, implement filter places by amenity with search button click
+      * `teardown_db` - after each request, this method calls .close() (i.e. .remove()) on the current SQLAlchemy Session
+      * `hbnb_filters` - handles request to custom template with states, cities & amentities
+    * [100-hbnb.py](web_dynamic/100-hbnb.py) - Flask app that integrates with AirBnB static HTML template, implement State and Cities filters with search button click
+      * `teardown_db` - after each request, this method calls .close() (i.e. .remove()) on the current SQLAlchemy Session
+      * `hbnb_filters` - handles request to custom template with states, cities & amentities
+    * [101-hbnb.py](web_dynamic/101-hbnb.py) - Flask app that integrates with AirBnB static HTML template, show and hide reviews
+      * `teardown_db` - after each request, this method calls .close() (i.e. .remove()) on the current SQLAlchemy Session
+      * `hbnb_filters` - handles request to custom template with states, cities & amentities
+    * [templates](web_dynamic/templates) - contains HTML templates
+      * [0-hbnb.html](web_dynamic/templates/0-hbnb.html) - add variable cache_id as query string to each `<LINK>` tag URL
+      * [1-hbnb.html](web_dynamic/templates/1-hbnb.html) - add jQuery and JS to make dynamic filters
+      * [2-hbnb.html](web_dynamic/templates/2-hbnb.html) - add API status checker
+      * [3-hbnb.html](web_dynamic/templates/3-hbnb.html) - fetch places, make places article dynamic
+      * [4-hbnb.html](web_dynamic/templates/4-hbnb.html) - filter places by amenity
+      * [100-hbnb.html](web_dynamic/templates/100-hbnb.html) - filter states and cities
+      * [101-hbnb.html](web_dynamic/templates/101-hbnb.html) - show/hide reviews
+    * [static](web_dynamic/static) - contains CSS, Javascript, image files
+      * [scripts](web_dynamic/static/scripts) - Javascript files
+        * [1-hbnb.js](web_dynamic/static/scripts/1-hbnb.js) - make dynamic filters
+        * [2-hbnb.js](web_dynamic/static/scripts/2-hbnb.js) - add API status checker
+        * [3-hbnb.js](web_dynamic/static/scripts/3-hbnb.js) - fetch places from API
+        * [4-hbnb.js](web_dynamic/static/scripts/4-hbnb.js) - filter places by amenity
+        * [100-hbnb.js](web_dynamic/static/scripts/100-hbnb.js) - filter states and cities
+        * [101-hbnb.js](web_dynamic/static/scripts/101-hbnb.js) -  show/hide reviews
+      * [styles](web_dynamic/static/styles) - CSS files
+        * [3-footer.css](web_dynamic/static/3-footer.css) - footer style
+        * [3-header.css](web_dynamic/static/3-header.css) - header style
+        * [4-common.css](web_dynamic/static/4-common.css) - body style
+        * [6-filters.css](web_dynamic/static/6-filters.css) - filter style
+        * [8-places.css](web_dynamic/static/8-places.css) - places style
+      
+
+## Environmental Variables
+```
+HBNB_ENV: running environment. It can be “dev” or “test” for the moment (“production” soon!)
+HBNB_MYSQL_USER: the username of your MySQL
+HBNB_MYSQL_PWD: the password of your MySQL
+HBNB_MYSQL_HOST: the hostname of your MySQL
+HBNB_MYSQL_DB: the database name of your MySQL
+HBNB_TYPE_STORAGE: the type of storage used. It can be “file” (using FileStorage) or db (using DBStorage)
+```
+
+## Two storage systems
+
+ This application is designed to run with 2 storage engine models:
 
 * File Storage Engine:
 
@@ -32,21 +145,32 @@ HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_test_db HBNB_TYPE_STORAGE=db \
 [COMMAND HERE]
 ```
 
-## Environment
+## Usage
+Run your api in one terminal window:
+```
+user@ubuntu:~/AirBnB_v4$ HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db HBNB_API_PORT=5001 python3 -m api.v1.app
+...
+```
+And your Flask file in another:
+```
+user@ubuntu:~/AirBnB_v4$ HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db python3 -m web_dynamic.2-hbnb
+* Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+....
+```
+Open up a web browser and type `0.0.0.0:5000/2-hbnb`
 
-* __OS:__ Ubuntu 14.04 LTS
-* __language:__ Python 3.4.3
-* __web server:__ nginx/1.4.6
-* __application server:__ Flask 0.12.2, Jinja2 2.9.6
-* __web server gateway:__ gunicorn (version 19.7.1)
-* __database:__ mysql Ver 14.14 Distrib 5.7.18
-* __documentation:__ Swagger (flasgger==0.6.6)
-* __style:__
-  * __python:__ PEP 8 (v. 1.7.0)
-  * __web static:__ [W3C Validator](https://validator.w3.org/)
-  * __bash:__ ShellCheck 0.3.3
+**In place of `2-hbnb` you can specify other Flask files versions**
 
-<img src="https://github.com/jarehec/AirBnB_clone_v3/blob/master/dev/hbnb_step5.png" />
+Look at upper right dot: that's your API status checker! Red means that our API is available. Grey means that our API is not available.
+
+API not available
+![2hbnb](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/309/hbnb_2_0.jpg)
+
+API available!
+![2hbnbapi](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/309/hbnb_2_1.jpg)
+
+Filters functionality
+![checkbox](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/309/hbnb_1_2.jpg)
 
 ## Configuration Files
 
@@ -210,15 +334,22 @@ create: create [ARG] [PARAM 1] [PARAM 2] ...
 Uses [Travis-CI](https://travis-ci.org/) to run all tests on all commits to the
 github repo
 
-## Authors
+## Bugs
 
+At this time, there are no known bugs.
+
+## Authors
+Phase 4:
+* Becky Chen, [bchen528](https://github.com/bchen528) | [@bchen803](https://twitter.com/bchen803)
+* Madison Burke, [RocketHTML](https://github.com/RocketHTML) | [@JsonBurke](https://twitter.com/jsonburke)
+
+**Note: As per Holberton's requirements, we practice working with new Phase 1, 2, 3 codebases in our Phase 4 version.**
+Phases 1 - 3:
 * MJ Johnson, [@mj31508](https://github.com/mj31508)
 * David John Coleman II, [davidjohncoleman.com](http://www.davidjohncoleman.com/) | [@djohncoleman](https://twitter.com/djohncoleman)
 * Kimberly Wong, [kjowong](https://github.com/kjowong) | [@kjowong](https://twitter.com/kjowong) | [kjowong@gmail.com](kjowong@gmail.com)
 * Carrie Ybay, [hicarrie](https://github.com/hicarrie) | [@hicarrie_](https://twitter.com/hicarrie_)
 * Jared Heck, [jarehec](https://github.com/jarehec) | [@jarehec](https://twitter.com/jarehec)
-* Becky Chen, [bchen528](https://github.com/bchen528) | [@bchen803](https://twitter.com/bchen803)
-* Madison Burke, [RocketHTML](https://github.com/RocketHTML) | [@JsonBurke](https://twitter.com/jsonburke)
 
 ## License
 
