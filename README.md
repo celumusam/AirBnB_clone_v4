@@ -342,6 +342,7 @@ Phase 4:
 * Madison Burke, [RocketHTML](https://github.com/RocketHTML) | [@JsonBurke](https://twitter.com/jsonburke)
 
 **Note: As per Holberton's requirements, we practice working with new Phase 1, 2, 3 codebases in our Phase 4 version.**
+
 Phases 1 - 3:
 * MJ Johnson, [@mj31508](https://github.com/mj31508)
 * David John Coleman II, [davidjohncoleman.com](http://www.davidjohncoleman.com/) | [@djohncoleman](https://twitter.com/djohncoleman)
